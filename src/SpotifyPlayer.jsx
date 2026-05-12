@@ -96,7 +96,10 @@ export default function SpotifyPlayer() {
     if (!audio) return;
 
     const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
+    const updateDuration = () => {
+      console.log("[v0] Audio loaded, duration:", audio.duration);
+      setDuration(audio.duration);
+    };
     const handleEnded = () => {
       setIsPlaying(false);
       if (repeat) {
@@ -105,15 +108,25 @@ export default function SpotifyPlayer() {
         setIsPlaying(true);
       }
     };
+    const handleError = (e) => {
+      console.log("[v0] Audio error:", e.target.error);
+    };
+    const handleCanPlay = () => {
+      console.log("[v0] Audio can play");
+    };
 
     audio.addEventListener('timeupdate', updateTime);
     audio.addEventListener('loadedmetadata', updateDuration);
     audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('error', handleError);
+    audio.addEventListener('canplay', handleCanPlay);
 
     return () => {
       audio.removeEventListener('timeupdate', updateTime);
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
+      audio.removeEventListener('canplay', handleCanPlay);
     };
   }, [repeat]);
 
@@ -264,7 +277,7 @@ export default function SpotifyPlayer() {
         </div>
 
         {/* Hidden Audio Element */}
-        <audio ref={audioRef} src="/Valentino - LOVERS.mp3" preload="metadata" />
+        <audio ref={audioRef} src="/Valentino%20-%20LOVERS.mp3" preload="metadata" />
       </div>
 
       {/* Custom Styles */}
