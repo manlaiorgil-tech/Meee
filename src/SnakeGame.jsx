@@ -5,18 +5,19 @@ const INITIAL_SNAKE = [{ x: 7, y: 7 }];
 const INITIAL_FOOD = { x: 10, y: 10 };
 const INITIAL_DIRECTION = { x: 1, y: 0 };
 
-const isOppositeDirection = (current, next) => current.x + next.x === 0 && current.y + next.y === 0;
-
 const getRandomFood = (snake) => {
-  let nextFood;
+  let nextFood = INITIAL_FOOD;
   do {
     nextFood = {
       x: Math.floor(Math.random() * GRID_SIZE),
       y: Math.floor(Math.random() * GRID_SIZE),
     };
   } while (snake.some((part) => part.x === nextFood.x && part.y === nextFood.y));
+
   return nextFood;
 };
+
+const isOppositeDirection = (current, next) => current.x + next.x === 0 && current.y + next.y === 0;
 
 export default function SnakeGame() {
   const [snake, setSnake] = useState(INITIAL_SNAKE);
@@ -24,8 +25,8 @@ export default function SnakeGame() {
   const [direction, setDirection] = useState(INITIAL_DIRECTION);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
-  const directionRef = useRef(INITIAL_DIRECTION);
   const touchStart = useRef(null);
+  const directionRef = useRef(INITIAL_DIRECTION);
 
   const changeDirection = useCallback((nextDirection) => {
     setDirection((current) => {
@@ -52,7 +53,6 @@ export default function SnakeGame() {
       if (!nextDirection) return;
 
       event.preventDefault();
-      event.stopPropagation();
       changeDirection(nextDirection);
     };
 
@@ -117,7 +117,6 @@ export default function SnakeGame() {
   };
 
   const handleTouchEnd = (event) => {
-    event.preventDefault();
     if (!touchStart.current) return;
 
     const touch = event.changedTouches[0];
@@ -135,21 +134,18 @@ export default function SnakeGame() {
     touchStart.current = null;
   };
 
-  const ControlButton = ({ children, onClick, label }) => (
-    <button type="button" onClick={onClick} aria-label={label} className="snake-control">
-      {children}
-    </button>
-  );
-
   return (
-    <div className="rounded-3xl border border-white/10 bg-black/40 p-4 backdrop-blur-xl sm:p-6">
+    <div className="premium-card rounded-[2rem] p-4 sm:p-6">
       <div className="mb-4 flex items-center justify-between text-white">
-        <h3 className="font-serif text-2xl">Snake Game</h3>
-        <p>Score: {score}</p>
+        <div>
+          <p className="text-xs uppercase tracking-[0.25em] text-cyan-200/70">Arcade</p>
+          <h3 className="font-serif text-2xl sm:text-3xl">Neon Snake</h3>
+        </div>
+        <p className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm">Score: {score}</p>
       </div>
 
       <div
-        className="snake-board grid gap-[2px] rounded-xl bg-neutral-900 p-2"
+        className="snake-board grid gap-[2px] rounded-2xl bg-black/50 p-2 shadow-2xl shadow-cyan-500/10"
         style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, minmax(0, 1fr))` }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -165,36 +161,44 @@ export default function SnakeGame() {
           return (
             <div
               key={index}
-              className={`aspect-square rounded-sm ${
+              className={`aspect-square rounded-[4px] transition-all duration-150 ${
                 isSnake
-                  ? 'bg-emerald-400 shadow-lg shadow-emerald-400/50'
+                  ? 'bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]'
                   : isFood
-                  ? 'bg-pink-400'
-                  : 'bg-neutral-800'
+                  ? 'bg-fuchsia-400 shadow-[0_0_16px_rgba(232,121,249,0.9)]'
+                  : 'bg-white/[0.045]'
               }`}
             />
           );
         })}
       </div>
 
-      <p className="mt-3 text-xs text-white/50 sm:hidden">Swipe inside the board or use buttons. The page will not move while playing.</p>
+      <p className="mt-3 text-xs text-white/50 sm:hidden">Swipe inside the board. The page will not scroll while playing.</p>
 
-      <div className="mt-5 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
-        <div className="sm:hidden" />
-        <ControlButton label="Move up" onClick={() => changeDirection({ x: 0, y: -1 })}>↑</ControlButton>
-        <div className="sm:hidden" />
-        <ControlButton label="Move left" onClick={() => changeDirection({ x: -1, y: 0 })}>←</ControlButton>
-        <button type="button" onClick={resetGame} className="snake-control text-xs sm:px-5 sm:text-sm">Restart</button>
-        <ControlButton label="Move right" onClick={() => changeDirection({ x: 1, y: 0 })}>→</ControlButton>
-        <div className="sm:hidden" />
-        <ControlButton label="Move down" onClick={() => changeDirection({ x: 0, y: 1 })}>↓</ControlButton>
-        <div className="sm:hidden" />
+      <div className="mt-5 grid grid-cols-3 gap-2 sm:hidden">
+        <div />
+        <button type="button" onClick={() => changeDirection({ x: 0, y: -1 })} className="game-control">↑</button>
+        <div />
+        <button type="button" onClick={() => changeDirection({ x: -1, y: 0 })} className="game-control">←</button>
+        <button type="button" onClick={resetGame} className="game-control text-xs">Reset</button>
+        <button type="button" onClick={() => changeDirection({ x: 1, y: 0 })} className="game-control">→</button>
+        <div />
+        <button type="button" onClick={() => changeDirection({ x: 0, y: 1 })} className="game-control">↓</button>
+        <div />
+      </div>
+
+      <div className="mt-5 hidden flex-wrap gap-3 sm:flex">
+        <button type="button" onClick={() => changeDirection({ x: 0, y: -1 })} className="game-control">↑</button>
+        <button type="button" onClick={() => changeDirection({ x: -1, y: 0 })} className="game-control">←</button>
+        <button type="button" onClick={() => changeDirection({ x: 1, y: 0 })} className="game-control">→</button>
+        <button type="button" onClick={() => changeDirection({ x: 0, y: 1 })} className="game-control">↓</button>
+        <button type="button" onClick={resetGame} className="game-control px-5 text-sm">Restart</button>
       </div>
 
       {gameOver && (
-        <div className="mt-4 text-white">
+        <div className="mt-4 rounded-2xl border border-fuchsia-300/20 bg-fuchsia-400/10 p-4 text-white">
           <p className="mb-3 text-lg">Game Over</p>
-          <button onClick={resetGame} className="rounded-full bg-white px-5 py-2 text-black">Restart</button>
+          <button type="button" onClick={resetGame} className="rounded-full bg-white px-5 py-2 text-black transition-transform hover:scale-105">Restart</button>
         </div>
       )}
     </div>
