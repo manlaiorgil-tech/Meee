@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import SnakeGame from './SnakeGame';
+import SpotifyPlayer from './SpotifyPlayer';
 
 const skills = [
   'Business Developing',
@@ -306,18 +307,12 @@ export default function PersonalWebsite() {
 
         <section className="border-t border-border bg-gradient-to-b from-charcoal to-black text-white">
           <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="grid gap-12 lg:grid-cols-2">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div className="space-y-6">
                 <p className="text-sm uppercase tracking-[0.25em] text-neutral-400">Interactive</p>
                 <h2 className="font-serif text-5xl">Play & Listen</h2>
                 <p className="max-w-lg text-neutral-300">A little retro snake game and my current favorite track built directly into the website.</p>
-                <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-                  <p className="mb-4 text-sm uppercase tracking-[0.2em] text-neutral-400">Now Playing</p>
-                  <h3 className="font-serif text-3xl">Valentino — LOVERS</h3>
-                  <audio controls className="mt-5 w-full">
-                    <source src="/Valentino - LOVERS.mp3" type="audio/mpeg" />
-                  </audio>
-                </div>
+                <SpotifyPlayer />
               </div>
               <SnakeGame />
             </motion.div>
