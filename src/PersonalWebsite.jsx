@@ -191,7 +191,7 @@ export default function PersonalWebsite() {
                 <img
                   src={images.street}
                   alt="Edinburgh street style"
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  className="h-full w-full object-cover object-right transition-transform duration-700 hover:scale-105"
                 />
               </motion.div>
 
