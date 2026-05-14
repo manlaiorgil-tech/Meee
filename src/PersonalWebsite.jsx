@@ -119,9 +119,7 @@ export default function PersonalWebsite() {
                     alt="Manlai Orgil"
                     className="h-full w-full object-cover"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/60 to-transparent p-8">
-                    <p className="text-sm text-cream/80"></p>
-                  </div>
+
                 </div>
               </motion.div>
             </div>
@@ -130,7 +128,7 @@ export default function PersonalWebsite() {
 
         {/* About Section */}
         <section id="about" className="border-t border-border">
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-0">
+          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
             <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
               <motion.div
                 initial="hidden"
@@ -172,8 +170,9 @@ export default function PersonalWebsite() {
               variants={fadeUp}
               className="mb-16"
             >
-              <p className="text-sm uppercase tracking-[0.25em] text-muted"></p>
+              <p className="text-sm uppercase tracking-[0.25em] text-muted">Gallery</p>
               <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">
+                Moments & Places
               </h2>
             </motion.div>
 
@@ -245,14 +244,7 @@ export default function PersonalWebsite() {
               </motion.div>
             </motion.div>
 
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="mt-8 text-center text-sm text-muted"
-            >
-            </motion.p>
+
           </div>
         </section>
 
