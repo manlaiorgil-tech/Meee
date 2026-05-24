@@ -31,7 +31,7 @@ export default function PersonalWebsite() {
           </nav>
           <a
             href="#contact"
-            className="hidden border border-charcoal px-5 py-2.5 text-sm font-medium transition-all hover:bg-charcoal hover:text-cream md:block"
+            className="hidden border border-charcoal px-5 py-2.5 text-sm transition-all hover:bg-charcoal hover:text-cream md:block"
           >
             Get in Touch
           </a>

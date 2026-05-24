@@ -165,7 +165,7 @@ export default function SpotifyPlayer() {
       <div className="rounded-2xl bg-gradient-to-b from-[#282828] to-[#121212] p-6 shadow-2xl">
         <div className="flex items-center gap-2 mb-6">
           <MusicNoteIcon className="h-5 w-5 text-neutral-400" />
-          <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+          <span className="text-xs uppercase tracking-wider text-neutral-400">
             Now Playing
           </span>
         </div>
@@ -184,7 +184,7 @@ export default function SpotifyPlayer() {
 
         <div className="mb-4 flex items-start justify-between">
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-bold text-white truncate">LOVERS</h3>
+            <h3 className="text-lg text-white truncate">LOVERS</h3>
             <p className="text-sm text-neutral-400 truncate">Valentino</p>
           </div>
           <button onClick={() => setLiked(!liked)} className="p-2 transition-transform hover:scale-110">

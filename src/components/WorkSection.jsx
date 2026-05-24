@@ -63,7 +63,7 @@ export default function WorkSection() {
               </p>
               <h3 className="mt-4 font-serif text-2xl leading-tight">{project.title}</h3>
               <p className="mt-4 flex-1 text-base leading-relaxed text-muted">{project.description}</p>
-              <p className="mt-6 text-sm font-medium">{project.result}</p>
+              <p className="mt-6 text-sm">{project.result}</p>
             </motion.div>
           ))}
         </motion.div>
