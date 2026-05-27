@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 const heroImage =
   'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00057-Of3Vt3speVN8d1RkojgWh27V1vrDFx.jpeg';

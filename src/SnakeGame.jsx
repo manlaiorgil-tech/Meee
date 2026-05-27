@@ -122,7 +122,7 @@ export default function SnakeGame() {
   };
 
   return (
-    <div className="border border-border p-6">
+    <div className="w-full max-w-xs">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-muted">Snake</p>

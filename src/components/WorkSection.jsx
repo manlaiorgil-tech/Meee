@@ -1,101 +1,109 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
-// TODO: Replace with your actual projects
 const projects = [
   {
     num: '01',
     category: 'Marketing',
     title: 'Social Campaign Strategy',
+    deck: 'A brand awareness campaign across Instagram and TikTok, growing reach organically through community and content.',
     description:
-      'Planned and executed a brand awareness campaign across Instagram and TikTok, growing reach organically through content and community building.',
+      'Planned and executed a full-funnel awareness campaign. Leveraged ethnographic content strategy rooted in cultural storytelling — not trend-chasing. Organic reach grew 38% in 60 days without paid amplification.',
     result: '+38% reach in 60 days',
     year: '2024',
-    image:
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1817-GyRoF2HVVrvkrZBGgA9nfbvwi9cCzz.jpeg',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1817-GyRoF2HVVrvkrZBGgA9nfbvwi9cCzz.jpeg',
   },
   {
     num: '02',
     category: 'Brand Design',
     title: 'Visual Identity System',
+    deck: 'A complete visual identity for a Dublin-based startup — logo, palette, typography, and brand guidelines.',
     description:
-      'A complete visual identity — logo, color palette, typography, and brand guidelines for a Dublin-based startup.',
+      'From first sketch to final brand book. Built a distinctive identity that avoided generic startup aesthetics in favour of something grounded — drawing on craft traditions from both the Mongolian and Irish visual canon.',
     result: 'Launched on schedule',
     year: '2024',
-    image:
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3A107F01-6988-4B63-AD3D-61815E994894-qct7pXTUGPNWJoHYzQFsYmplg1spf6.jpg',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3A107F01-6988-4B63-AD3D-61815E994894-qct7pXTUGPNWJoHYzQFsYmplg1spf6.jpg',
   },
   {
     num: '03',
     category: 'Photography',
     title: 'Documentary Portrait Series',
+    deck: 'A photo series exploring identity and culture across Mongolia and Ireland — photojournalism meets portraiture.',
     description:
-      'A photo series exploring identity and culture across Mongolia and Ireland, combining photojournalism with portraiture.',
-    result: '30 images, ongoing',
+      'Thirty images shot across two countries over two years. The series examines what remains when you cross hemispheres — the way land and light shape a face, the way heritage persists even in diaspora.',
+    result: '30 images · ongoing',
     year: '2023',
-    image:
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7274.JPG-Nme9dws3RXRTfBlT8vGqiKXSmQvrIu.jpeg',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7274.JPG-Nme9dws3RXRTfBlT8vGqiKXSmQvrIu.jpeg',
   },
 ];
 
 export default function WorkSection() {
   return (
-    <section id="work" className="border-t border-border">
-      <div className="mx-auto max-w-[1600px] px-6 py-32 lg:px-10 lg:py-48">
-        <div className="grid grid-cols-12 gap-6 lg:gap-12 mb-20 lg:mb-32">
-          <div className="col-span-12 lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted">
-              (02) Work
-            </p>
+    <section id="work">
+      <div className="mx-auto max-w-[1600px] px-6 py-24 lg:px-10 lg:py-36">
+
+        {/* Section header */}
+        <div className="mb-10 border-b-2 border-ink pb-6">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="section-stamp text-vermillion border-vermillion">Section 02</span>
+            <span className="dateline text-ink/40">Selected works · 2023—2025</span>
           </div>
-          <div className="col-span-12 lg:col-span-9">
-            <h2 className="text-4xl leading-[1.05] tracking-tightest md:text-6xl">
-              Selected projects.
-            </h2>
-          </div>
+          <h2 className="masthead-title text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.0]">
+            Selected Projects.
+          </h2>
         </div>
 
-        <div className="space-y-32 lg:space-y-48">
+        {/* Projects as newspaper articles */}
+        <div className="space-y-0">
           {projects.map((project, i) => (
             <motion.article
               key={project.num}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="grid grid-cols-12 gap-6 lg:gap-12 items-end"
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+              className="border-b-2 border-ink py-12 lg:py-16"
             >
-              <div
-                className={`col-span-12 lg:col-span-7 ${
-                  i % 2 === 1 ? 'lg:order-2' : ''
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="h-auto w-full object-cover transition-transform duration-1000 hover:scale-[1.02]"
-                  />
-                </div>
+              {/* Article dateline / meta */}
+              <div className="flex flex-wrap items-center gap-4 mb-4">
+                <span className="section-stamp text-vermillion border-vermillion">{project.category}</span>
+                <span className="dateline text-ink/40">{project.num} of 03</span>
+                <span className="dateline text-ink/40">·</span>
+                <span className="dateline text-ink/40">{project.year}</span>
               </div>
-              <div
-                className={`col-span-12 lg:col-span-5 ${
-                  i % 2 === 1 ? 'lg:order-1' : ''
-                }`}
-              >
-                <p className="text-xs text-muted">
-                  {project.num} — {project.year}
-                </p>
-                <h3 className="mt-4 text-3xl leading-tight tracking-tightest md:text-4xl">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-sm uppercase tracking-[0.2em] text-muted">
-                  {project.category}
-                </p>
-                <p className="mt-6 text-base leading-relaxed text-muted">
-                  {project.description}
-                </p>
-                <p className="mt-8 text-sm">— {project.result}</p>
+
+              {/* Headline */}
+              <h3 className="masthead-title text-ink text-3xl md:text-5xl lg:text-6xl leading-tight mb-3">
+                {project.title}
+              </h3>
+
+              {/* Deck */}
+              <p className="font-display italic text-ink/65 text-lg leading-snug mb-8 max-w-2xl">
+                {project.deck}
+              </p>
+
+              {/* Two-column article body */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
+                {/* Image column */}
+                <div className={`md:col-span-7 ${i % 2 === 1 ? 'md:order-2 md:pl-8' : 'md:border-r-2 md:border-ink md:pr-8'}`}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full object-cover halftone transition-transform duration-700 hover:scale-[1.02]"
+                      style={{ height: '420px', objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
+
+                {/* Text column */}
+                <div className={`md:col-span-5 mt-6 md:mt-0 ${i % 2 === 1 ? 'md:order-1 md:border-r-2 md:border-ink md:pr-8' : 'md:pl-8'}`}>
+                  <p className="newspaper-text text-ink">{project.description}</p>
+                  <div className="mt-8 pt-5 border-t border-ink">
+                    <p className="dateline text-ink/45 mb-1">Result</p>
+                    <p className="font-playfair italic text-xl text-vermillion">{project.result}</p>
+                  </div>
+                </div>
               </div>
             </motion.article>
           ))}

@@ -1,25 +1,24 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import SnakeGame from '../SnakeGame';
 import SpotifyPlayer from '../SpotifyPlayer';
 
 export default function InteractiveSection() {
   return (
-    <section className="border-t border-border">
-      <div className="mx-auto max-w-[1600px] px-6 py-32 lg:px-10 lg:py-48">
-        <div className="grid grid-cols-12 gap-6 lg:gap-12 mb-20 lg:mb-32">
-          <div className="col-span-12 lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted">
-              (05) Play
-            </p>
+    <section>
+      <div className="mx-auto max-w-[1600px] px-6 py-24 lg:px-10 lg:py-36">
+
+        {/* Section header — newspaper style */}
+        <div className="mb-10 border-b-2 border-ink pb-6">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="section-stamp text-vermillion border-vermillion">Section 05</span>
+            <span className="dateline text-ink/40">Built-in curiosities</span>
           </div>
-          <div className="col-span-12 lg:col-span-9">
-            <h2 className="text-4xl leading-[1.05] tracking-tightest md:text-6xl">
-              A game & a track.
-            </h2>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
-              A small retro game and a current favorite — built right into the site.
-            </p>
-          </div>
+          <h2 className="masthead-title text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.0]">
+            A game & a track.
+          </h2>
+          <p className="newspaper-text text-ink/55 mt-3 max-w-md">
+            A small retro game and a current favourite — built right into the page.
+          </p>
         </div>
 
         <motion.div
